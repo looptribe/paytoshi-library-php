@@ -12,7 +12,7 @@
 
 class Paytoshi
 {
-    const PAYTOSHI_BASE_URL = "https://paytoshi.org/api/v1";
+    const PAYTOSHI_BASE_URL = "http://paytoshi.org/api/v1";
     
     private $isCurl;
     private $verifyPeer;
