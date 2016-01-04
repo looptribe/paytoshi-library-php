@@ -126,4 +126,10 @@ class Paytoshi
             'referral' => $referral,
             ), array('apikey' => $faucetApikey));
     }
+
+    public function faucetBalance($faucetApikey)
+    {
+        return $this->get('faucet/balance',
+            array('apikey' => $faucetApikey));
+    }
 }
