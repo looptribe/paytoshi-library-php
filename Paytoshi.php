@@ -113,7 +113,7 @@ class Paytoshi
         if (!$response)
             return null;
         
-        return json_decode($response, true);
+        return @json_decode($response, true);
     }
     
     protected function post($api, $postData = array(), $params = array())
@@ -125,7 +125,7 @@ class Paytoshi
         if (!$response)
             return null;
 
-        return json_decode($response, true);
+        return @json_decode($response, true);
     }
     
     public function faucetSend($faucetApikey, $address, $amount, $ip, $referral = false)
