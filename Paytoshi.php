@@ -16,11 +16,19 @@ class Paytoshi
     
     private $isCurl;
     private $verifyPeer;
+    private $timeout;
     
-    public function __construct($isCurl = true, $verifyPeer = true)
+    public function __construct($isCurl = true, $verifyPeer = true, $timeout = null)
     {
         $this->isCurl = $isCurl;
         $this->verifyPeer = $verifyPeer;
+        if ($timeout === null)
+        {
+            $socket_timeout = ini_get('default_socket_timeout');
+            $script_timeout = ini_get('max_execution_time');
+            $timeout = min($script_timeout / 2, $socket_timeout);
+        }
+        $this->timeout = $timeout;
     }
     
     private function getBaseUrl()
@@ -46,6 +54,7 @@ class Paytoshi
         $ch = curl_init($url);
         curl_setopt_array($ch, array(
             CURLOPT_SSL_VERIFYPEER => $this->verifyPeer,
+            CURLOPT_TIMEOUT => (int)$this->timeout,
             CURLOPT_RETURNTRANSFER => true
         ));
         
@@ -78,6 +87,8 @@ class Paytoshi
         }
         else
             $opts['http'] = array('method' => 'GET');
+        
+        $opts['http']['timeout'] = $this->timeout;
         
         $context = stream_context_create($opts);
         $response = file_get_contents($url, false, $context);
