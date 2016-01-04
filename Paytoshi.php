@@ -91,7 +91,7 @@ class Paytoshi
         $opts['http']['timeout'] = $this->timeout;
         
         $context = stream_context_create($opts);
-        $response = file_get_contents($url, false, $context);
+        $response = @file_get_contents($url, false, $context);
         return $response;
     }
     
