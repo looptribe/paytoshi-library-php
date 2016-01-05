@@ -12,5 +12,8 @@
   },
   "autoload": {
     "psr-4": {"Looptribe\\Paytoshi\\Api\\": "src/"}
+  },
+  "scripts": {
+    "test": "php vendor/bin/phpunit --colors=always --coverage-html=coverage --coverage-text"
   }
 }
