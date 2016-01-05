@@ -10,7 +10,9 @@
  * @package looptribe/paytoshi-library-php
  */
 
-class Paytoshi
+namespace Looptribe\Paytoshi;
+
+class PaytoshiApi
 {
     const PAYTOSHI_BASE_URL = "http://paytoshi.org/api/v1";
     
