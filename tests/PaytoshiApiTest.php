@@ -34,6 +34,7 @@ class PaytoshiApiTest extends \PHPUnit_Framework_TestCase
 
         $result = $sut->send('myapikey', 'mipcBbFg9gMiCh81Kj8tqqdgoZub1ZJRfn', 1000, '1.2.3.4');
 
+        $this->assertInstanceOf('Looptribe\Paytoshi\Api\Response\FaucetSendResponse', $result);
         $this->assertTrue($result->isSuccessful());
         $this->assertSame(1000, $result->getAmount());
         $this->assertSame('mipcBbFg9gMiCh81Kj8tqqdgoZub1ZJRfn', $result->getRecipient());

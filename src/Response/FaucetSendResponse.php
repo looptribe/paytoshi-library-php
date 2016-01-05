@@ -4,7 +4,7 @@ namespace Looptribe\Paytoshi\Api;
 
 use Buzz\Message\Response;
 
-class SendApiResponse extends ApiResponse
+class FaucetSendResponse extends ApiResponse
 {
     /** @var int */
     private $amount = null;

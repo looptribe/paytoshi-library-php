@@ -1,10 +1,10 @@
 <?php
 
-namespace Looptribe\Paytoshi\Tests\Api;
+namespace Looptribe\Paytoshi\Tests\Api\Response;
 
-use Looptribe\Paytoshi\Api\SendApiResponse;
+use Looptribe\Paytoshi\Api\Response\FaucetSendResponse;
 
-class SendApiResponseTest extends \PHPUnit_Framework_TestCase
+class FaucetSendResponseTest extends \PHPUnit_Framework_TestCase
 {
     public function testParseSuccessful()
     {
@@ -20,7 +20,7 @@ class SendApiResponseTest extends \PHPUnit_Framework_TestCase
             ->method('getContent')
             ->willReturn('{"recipient":"mipcBbFg9gMiCh81Kj8tqqdgoZub1ZJRfn","amount":100}');
 
-        $sut = new SendApiResponse($response);
+        $sut = new FaucetSendResponse($response);
 
         $this->assertTrue($sut->isSuccessful());
         $this->assertNull($sut->getError());
