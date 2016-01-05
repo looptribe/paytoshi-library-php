@@ -58,3 +58,6 @@ $paytoshi = new Paytoshi(true, true, 20); // 20 seconds
 ```
 
 By default, half of script execution time is used. To disable timeout, pass `0`.
+
+## License
+Paytoshi PHP Library is [BSD licensed](./LICENSE).
