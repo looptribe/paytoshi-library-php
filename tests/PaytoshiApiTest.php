@@ -39,4 +39,37 @@ class PaytoshiApiTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(1000, $result->getAmount());
         $this->assertSame('mipcBbFg9gMiCh81Kj8tqqdgoZub1ZJRfn', $result->getRecipient());
     }
+
+    public function testGetBalance()
+    {
+        $response = $this->getMock('Buzz\Message\Response');
+
+        $response
+            ->expects($this->any())
+            ->method('isSuccessful')
+            ->willReturn(true);
+
+        $response
+            ->expects($this->any())
+            ->method('getContent')
+            ->willReturn('{"available_balance":15000}');
+
+        $buzz = $this->getMockBuilder('Buzz\Browser')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $buzz
+            ->expects($this->once())
+            ->method('get')
+            ->with('http://www.example.net/api/faucet/balance?apikey=myapikey')
+            ->willReturn($response);
+
+        $sut = new PaytoshiApi($buzz, 'http://www.example.net/api/');
+
+        $result = $sut->getBalance('myapikey');
+
+        $this->assertInstanceOf('Looptribe\Paytoshi\Api\Response\FaucetBalanceResponse', $result);
+        $this->assertTrue($result->isSuccessful());
+        $this->assertSame(15000, $result->getAvailableBalance());
+    }
 }
