@@ -10,7 +10,13 @@ interface PaytoshiApiInterface
      * @param int $amount
      * @param string $ip
      * @param bool|false $referral
-     * @return SendApiResponse
+     * @return Response\FaucetSendResponse
      */
     public function send($apikey, $address, $amount, $ip, $referral = false);
+
+    /**
+     * @param string $apikey
+     * @return Response\FaucetBalanceResponse
+     */
+    public function getBalance($apikey);
 }

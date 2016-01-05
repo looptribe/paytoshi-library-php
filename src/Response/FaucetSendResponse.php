@@ -1,8 +1,9 @@
 <?php
 
-namespace Looptribe\Paytoshi\Api;
+namespace Looptribe\Paytoshi\Api\Response;
 
 use Buzz\Message\Response;
+use Looptribe\Paytoshi\Api\ApiResponse;
 
 class FaucetSendResponse extends ApiResponse
 {
