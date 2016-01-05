@@ -13,15 +13,50 @@ PHP Library for [Paytoshi's API](https://paytoshi.org/api).
 * PHP cURL extension (recommended) OR
 * [allow_fopen_url](http://php.net/manual/en/filesystem.configuration.php#ini.allow-url-fopen) enabled in your PHP config.
 
+## Installation
+The recommended way to install Paytoshi PHP Library is through [composer](https://getcomposer.org/).
+```
+composer.phar require looptribe/paytoshi-library-php
+```
+
 ## Usage
+Paytoshi PHP Library uses the [Buzz library](https://github.com/kriswallsmith/Buzz).
+
+### Create the API wrapper object
+
+#### Using FileGetContents
+
+``` php
+<?php
+
+$browser = new \Buzz\Browser();
+$paytoshi = new \Looptribe\Paytoshi\Api\PaytoshiApi($browser, 'http://paytoshi.org/api/v1/');
+```
+
+#### Using cUrl
+
+``` php
+<?php
+
+$browser = new \Buzz\Browser(new \Buzz\Client\Curl());
+$paytoshi = new Looptribe\Paytoshi\Api\PaytoshiApi($browser, 'http://paytoshi.org/api/v1/');
+```
+
+### Setup the client
+If you wish you can set a timeout on the requests (default 5 seconds):
+``` php
+<?php
+
+// Set 10 seconds of timeout
+$browser->getClient()->setTimeout(10);
+```
+
 ### Faucet Send API
 Create a new faucet payout.
 ``` php
 <?php
-
-require 'Paytoshi.php';
-
-$paytoshi = new Paytoshi();
+// Create the $paytoshi object as explained in the previous section
+...
 
 // Create a new payout
 $result = $paytoshi->faucetSend(
@@ -32,7 +67,7 @@ $result = $paytoshi->faucetSend(
 );
 
 // Create a referral payout
-$result = $paytoshi->faucetSend(
+$result = $paytoshi->send(
     'a8p9uevhfgx7ewt1kf09v2n3kfhzkeyxi8ywcehfqnl9is30gq',  //Faucet Api key
     '18aWoXRJRTfK8ZdxH9Y8qW3Q3AKPqra2DlyO',  //Bitcoin address
     100, //Amount
@@ -44,24 +79,10 @@ $result = $paytoshi->faucetSend(
 Check balance.
 ``` php
 // Check balance
-$result = $paytoshi->faucetBalance(
+$result = $paytoshi->getBalance(
     'a8p9uevhfgx7ewt1kf09v2n3kfhzkeyxi8ywcehfqnl9is30gq'  //Faucet Api key
 );
 ```
-
-Those methods return an array corresponding to the API response or `NULL` if there's a connection error.
-
-You can use the PHP native `file_get_contents` instead of the cUrl extension
-``` php
-$paytoshi = new Paytoshi(false);
-```
-
-You can also control the timeout by passing it as 3rd argument
-``` php
-$paytoshi = new Paytoshi(true, true, 20); // 20 seconds
-```
-
-By default, half of script execution time is used. To disable timeout, pass `0`.
 
 ## License
 Paytoshi PHP Library is [BSD licensed](./LICENSE).
