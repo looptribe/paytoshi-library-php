@@ -3,7 +3,7 @@ Paytoshi PHP Library
 
 [![Build Status](https://img.shields.io/travis/looptribe/paytoshi-library-php/package.svg)](https://travis-ci.org/looptribe/paytoshi-library-php)
 [![Coverage Status](https://img.shields.io/coveralls/looptribe/paytoshi-library-php/package.svg)](https://coveralls.io/github/looptribe/paytoshi-library-php)
-[![Coverage Status](https://img.shields.io/packagist/vpre/looptribe/paytoshi-php-library.svg)](https://packagist.org/packages/looptribe/paytoshi-library-php)
+[![Packagist](https://img.shields.io/packagist/vpre/looptribe/paytoshi-php-library.svg)](https://packagist.org/packages/looptribe/paytoshi-library-php)
 
 PHP Library for [Paytoshi's API](https://paytoshi.org/api). 
 
