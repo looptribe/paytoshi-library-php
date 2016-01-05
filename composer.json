@@ -1,0 +1,9 @@
+{
+  "name": "looptribe/paytoshi-library-php",
+  "description": "PHP Library for Paytoshi's API.",
+  "license": "BSD-3-Clause",
+  "homepage": "https://paytoshi.org/",
+  "require": {
+    "php": ">=5.3.0"
+  }
+}
