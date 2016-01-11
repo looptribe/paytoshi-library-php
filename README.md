@@ -60,7 +60,7 @@ $browser->getClient()->setTimeout(10);
 ...
 
 // Create a new payout
-$result = $paytoshi->faucetSend(
+$result = $paytoshi->send(
     'a8p9uevhfgx7ewt1kf09v2n3kfhzkeyxi8ywcehfqnl9is30gq', //Faucet Api key
     '1EhNaUFaVW99in6drLeD8ygrLicAcf8rAc', //Bitcoin address
     100, //Amount
@@ -84,6 +84,7 @@ $result = $paytoshi->getBalance(
     'a8p9uevhfgx7ewt1kf09v2n3kfhzkeyxi8ywcehfqnl9is30gq'  //Faucet Api key
 );
 
+// Your balance in satoshi
 $balance = $result->getAvailableBalance();
 ```
 
