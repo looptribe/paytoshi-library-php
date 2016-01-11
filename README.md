@@ -51,8 +51,9 @@ If you wish you can set a timeout on the requests (default 5 seconds):
 $browser->getClient()->setTimeout(10);
 ```
 
-### Faucet Send API
-Create a new faucet payout.
+### Faucet API
+
+#### Create a new faucet payout
 ``` php
 <?php
 // Create the $paytoshi object as explained in the previous section
@@ -76,12 +77,14 @@ $result = $paytoshi->send(
 );
 ```
 
-Check balance.
+#### Check balance
 ``` php
 // Check balance
 $result = $paytoshi->getBalance(
     'a8p9uevhfgx7ewt1kf09v2n3kfhzkeyxi8ywcehfqnl9is30gq'  //Faucet Api key
 );
+
+$balance = $result->getAvailableBalance();
 ```
 
 ## License
